@@ -1,0 +1,3 @@
+/home/sduell/BasicFit/CMakeFiles/edit_cache.dir
+/home/sduell/BasicFit/CMakeFiles/BasicFit.dir
+/home/sduell/BasicFit/CMakeFiles/rebuild_cache.dir
