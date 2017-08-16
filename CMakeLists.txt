@@ -12,7 +12,7 @@ file(GLOB FITTERUTILS "utils/*.cc")
 #Add ROOT libraries to link against
 list(APPEND CMAKE_PREFIX_PATH $ENV{ROOTSYS})
 
-find_package (ROOT REQUIRED COMPONENTS MathCore RIO Hist Tree Net Physics)
+find_package (ROOT REQUIRED COMPONENTS MathCore RIO Hist Tree Net Minuit Physics)
 
 include (${ROOT_USE_FILE})
 

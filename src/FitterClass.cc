@@ -4,7 +4,8 @@
 
 #include "FitterClass.h"
 
-//BasicFitter::FitterClass* BasicFitter::FitterClass::_glbInstance=NULL;
+using namespace BasicFitter;
+FitterClass* FitterClass::_glbInstance=0;
 
 //Constructor
 // -------------------------------------------------------------------------------------------
@@ -104,7 +105,7 @@ double BasicFitter::FitterClass::likelihood(double *x) {
 // Minuit Function
 // -------------------------------------------------------------------------------------------
 
-void minuitFunction(int& nDim, double* gout, double& result, double par[], int flg) {
+void BasicFitter::minuitFunction(int& nDim, double* gout, double& result, double par[], int flg) {
 
   result = BasicFitter::FitterClass::getGlobalInstance()->likelihood(par);
 

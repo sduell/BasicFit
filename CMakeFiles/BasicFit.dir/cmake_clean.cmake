@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/BasicFit.dir/src/FitterInputClass.cc.o"
   "CMakeFiles/BasicFit.dir/src/FitterClass.cc.o"
+  "CMakeFiles/BasicFit.dir/src/FitterInputClass.cc.o"
   "CMakeFiles/BasicFit.dir/utils/Utils.cc.o"
   "bin/libBasicFit.pdb"
   "bin/libBasicFit.so"
