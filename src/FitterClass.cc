@@ -85,18 +85,24 @@ double BasicFitter::FitterClass::likelihood(double *x) {
  double value = 0;
 
 
+cout << " fitpars: = " << x[0] <<" "<<x[1]<< endl;
+
  for(int iobs=0; iobs<_input->GetObservables().size();iobs++){
     for(int ibin=0; ibin < _nbins[iobs];ibin++){
         double pred(0);
         for(int icat=0; icat<_input->GetMergedInputComponent(iobs).size();icat++){
             pred+=_input->GetMergedInput(iobs,icat)[ibin]*x[icat];
-            value += -2*log(TMath::Poisson( _input->GetData(iobs)[ibin], pred ));
+            //cout << " inputvalues = " << _input->GetMergedInput(iobs,icat)[ibin] << endl;
         }
+            //cout << " pred = " << pred << endl;
+            //cout << " datavalues = " << _input->GetData(iobs)[ibin] << endl;
+        if(TMath::Poisson( _input->GetData(iobs)[ibin], pred )!=0)
+            value += -2*log(TMath::Poisson( _input->GetData(iobs)[ibin], pred ));
     }
  }
      
-    cout << " value = " << value << endl;
-                     
+    //cout << " value = " << value << endl;
+                     //Fatal("here","");
  return value;
 
 }
