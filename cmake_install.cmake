@@ -1,4 +1,4 @@
-# Install script for directory: /afs/atlass01.physik.uni-bonn.de/user/mbertemes/Documents/belle/BasicFit
+# Install script for directory: /home/sduell/BasicFit
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/afs/atlass01.physik.uni-bonn.de/user/mbertemes/Documents/belle/BasicFit/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/sduell/BasicFit/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

@@ -4,9 +4,8 @@
 
 #include "FitterClass.h"
 
-using namespace BasicFitter;
-FitterClass* FitterClass::_glbInstance=0;
-
+//BasicFitter::FitterClass* BasicFitter::FitterClass::_glbInstance=0;
+BasicFitter::FitterClass* BasicFitter::FitterClass::_gblInstance = NULL;
 //Constructor
 // -------------------------------------------------------------------------------------------
 
