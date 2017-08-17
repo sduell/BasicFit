@@ -79,7 +79,7 @@ void BasicFitter::FitterClass::Fcn() {
 
 }
 
-///NEW Likelihood Function
+//Likelihood Function
 double BasicFitter::FitterClass::likelihood(double *x) { 
 
  double value = 0;
@@ -103,6 +103,37 @@ cout << " fitpars: = " << x[0] <<" "<<x[1]<< endl;
      
     //cout << " value = " << value << endl;
                      //Fatal("here","");
+ return value;
+
+}
+
+//Likelihood Function
+double BasicFitter::FitterClass::chisq(double *x) { 
+ // chisq = ( f(x) - data )^T * Cov^-1 * ( f(x) - data )
+ double value = 0;
+
+ for(int iobs=0; iobs<_input->GetObservables().size();iobs++){
+    //In this example Cov is NOT with correlations, only statistical errors!
+    TMatrixD Cov(_nbins[iobs],_nbins[iobs]);
+    TMatrixD Nmc(_nbins[iobs],1);
+    TMatrixD Ndat(_nbins[iobs],1);
+    for(int ibin=0; ibin < _nbins[iobs];ibin++){
+        double pred(0);
+        Cov(ibin, ibin)=sqrt(_input->GetData(iobs)[ibin]);
+        Ndat(ibin,0)=_input->GetData(iobs)[ibin];
+        Nmc(ibin,0)=0;
+        for(int icat=0; icat<_input->GetMergedInputComponent(iobs).size();icat++){
+            Nmc(ibin,0)+=_input->GetMergedInput(iobs,icat)[ibin]*x[icat];
+        }
+    }
+    TMatrixD mDiff = TMatrixD(Nmc, TMatrixD::kMinus, Ndat);              // f(x) - data 
+    TMatrixD C1(Cov);
+    C1.Invert(); //Determine C^-1
+    TMatrixD p1=TMatrixD(mDiff, TMatrixD::kTransposeMult, C1);
+    TMatrixD p2=TMatrixD(p1, TMatrixD::kMult, mDiff);
+    value+=p2(0,0);
+ }
+
  return value;
 
 }
