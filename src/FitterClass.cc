@@ -96,8 +96,8 @@ cout << " fitpars: = " << x[0] <<" "<<x[1]<< endl;
         }
             //cout << " pred = " << pred << endl;
             //cout << " datavalues = " << _input->GetData(iobs)[ibin] << endl;
-        if(TMath::Poisson( _input->GetData(iobs)[ibin], pred )!=0)
-            value += -2*log(TMath::Poisson( _input->GetData(iobs)[ibin], pred ));
+        //if(TMath::Poisson( _input->GetData(iobs)[ibin], pred )!=0)
+        value += -2*log(TMath::Poisson( _input->GetData(iobs)[ibin], pred ));
     }
  }
      
@@ -144,5 +144,6 @@ double BasicFitter::FitterClass::chisq(double *x) {
 void BasicFitter::minuitFunction(int& nDim, double* gout, double& result, double par[], int flg) {
 
   result = BasicFitter::FitterClass::getGlobalInstance()->likelihood(par);
+  //result = BasicFitter::FitterClass::getGlobalInstance()->chisq(par);
 
 }
